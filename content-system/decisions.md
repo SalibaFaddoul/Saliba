@@ -13,3 +13,8 @@ Status: research + planning only. Nothing is posted, published or scheduled with
 - AI-label risk is low: real footage of Sal. Label only where Storias or Remotion generates realistic people/scenes.
 - Pillars lean founder: building with AI; real work vs performed work; thinking clearly about money/work/attention.
 - Never: personal wealth, selling in the post, any sale/acquisition of Bearish OS.
+
+## Oct 8, 2026 (later)
+- **English:** US.
+- **Punctuation:** no em dashes, anywhere, ever (scripts, captions, carousels, voice files).
+- **Next research:** review all available skills online for (1) killing AI-sounding writing, (2) copying Sal's voice exactly, (3) viral content that actually performs.
