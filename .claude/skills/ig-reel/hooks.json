@@ -116,7 +116,7 @@
       "template": "{N} {things} that {outcome}. Number {k} is the one nobody uses.",
       "example": "Five caption edits that double saves. Number four is the one nobody does.",
       "on_screen": "5 EDITS. #4 IS THE ONE.",
-      "best_for": "Retention through the middle: naming a favourite gives people a reason to stay past three.",
+      "best_for": "Retention through the middle: naming a favorite gives people a reason to stay past three.",
       "trap": "N above seven. Nobody believes you have nine good ones, and you do not.",
       "match": "^\\s*(?:here are\\s+)?\\d+\\s+\\w+|\\bnumber \\d+\\b|\\b(?:three|four|five|seven|ten)\\s+\\w+\\s+(?:every|that|you)\\b"
     },

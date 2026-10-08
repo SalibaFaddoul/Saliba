@@ -12,6 +12,13 @@ description: >-
 
 # ig-viral
 
+## Sal's rules (override everything below)
+- US English. No em dashes, no en dashes, no spaced hyphen used as a dash, even where the examples below use them.
+- Use only Sal's real numbers and stories. Missing facts stay `{{placeholder}}`. Never invent.
+- Skip guru or sales hooks (insider secrets, "steal this", comment-for-link). Comment-word CTAs only as free value, never a pitch.
+- Run `li-human`/`ig-human` with `--report` and fix by hand. Do not accept blind word swaps.
+- Draft only. Never post, schedule or send.
+
 The research skill. Everything else in this pack writes; this one goes and
 looks. Run it monthly, not daily. Formulas last a season.
 

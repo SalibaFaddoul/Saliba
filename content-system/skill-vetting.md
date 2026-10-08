@@ -46,3 +46,24 @@ carousel-lite (no license), rediumvex captions (sales words), charlie947 reels-s
 - No posting or scheduling credentials (Publora, upload-post, Buffer, Apify) in any `.env`.
 - Nothing posts. Every skill outputs drafts; Sal posts by hand.
 - Renders only on Sal's explicit "render".
+
+## Round 3: final check before install (Oct 8)
+Searched skill directories and leaderboards again. Challengers vetted head to head:
+- aboudjem/humanizer-skill (55 patterns, 0-100 score): keeps petergyang. Its "soul injection" invents details, its score is self-graded, and it fixes em dashes with hyphens.
+- trailofbits humanizer: does not exist in trailofbits/skills.
+- angelarose210/ghostwriter: keeps my-voice. Referenced scripts and templates are missing; generic sliders flatten voice.
+Nothing beat the top five.
+
+## Installed (project-level, `.claude/skills/`)
+| Skill | Source (license) | Edits made |
+|---|---|---|
+| my-voice | TravinDSO/myvoice-skill (MIT) | Dash ban can never be overridden; US English; draft-only; [spoken] samples; runs voicecheck.py |
+| my-voice/scripts/voicecheck.py | written for Sal (voicedna's stylometry.py has no license, so not copied) | Dash hard fail + drift vs samples |
+| no-ai-slop | petergyang/no-ai-slop (MIT) | Hard dash ban; blader patterns (credited); spoken-script, format, voice and approval sections |
+| ig-reel, ig-viral, ig-human | Jakeschincariol/instagram-agent-skill (MIT) | Data paths moved into project; reads MYVOICE.md; Sal's rules block; US spelling |
+| li-post, li-carousel, li-human | Jakeschincariol/linkedin-agent-skill (MIT) | Same as above |
+| viral-short-form-ideas | vyralcontent/content-skills (MIT) | Paid-tool pitch and banner removed |
+| remotion-best-practices, -create, -markup, -captions, -render, -studio | remotion-dev/skills | create-video pinned to 4.0.534 |
+| remotion-motion-graphics | haidrrrry/claude-remotion-skill (MIT) | "EVERY time" trigger softened; full render only on "render" |
+
+Tested: humanize.py, detect.py, hookscore.py, voicecheck.py run offline. Note: humanize.py turns an em dash into ", " which can leave "paid., nobody". Use `--report` and fix by hand (rule is in each skill).

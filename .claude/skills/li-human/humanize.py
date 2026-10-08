@@ -141,20 +141,10 @@ def pass_lexical(text, lex):
         hits.append({"find": find, "replace": entry["replace"] or "(deleted)",
                      "count": len(found), "family": entry["family"]})
         text = pattern.sub(lambda m: _match_case(m.group(0), entry["replace"]), text)
-    # Clean up after deletions. Deleting a whole clause leaves orphaned
-    # punctuation behind ("system. ." or a line that now opens on a comma),
-    # and that reads worse than the slop did.
+    # Clean up after deletions.
     text = re.sub(r"[ \t]{2,}", " ", text)
-    text = re.sub(r"(?m)^[ \t]*(?:[,.;:]+[ \t]*)+", "", text)
-    text = re.sub(r"(?m)^[ \t](?=\S)", "", text)       # one space left by a deletion.
-                                                      # Deeper indents are deliberate.
+    text = re.sub(r"(?m)^[ \t]*([,.;:])\s*", "", text)
     text = re.sub(r"\s+([,.;:!?])", r"\1", text)
-    text = re.sub(r",\s*([,.;:!?])", r"\1", text)      # an em dash became a comma,
-                                                      # then the clause after it went
-    text = text.replace("...", "\x00ELL\x00")          # protect real ellipses
-    text = re.sub(r"\.\s*\.+", ".", text)
-    text = re.sub(r"([!?])\s*\.", r"\1", text)
-    text = text.replace("\x00ELL\x00", "...")
     text = re.sub(r"(?m)^[ \t]+$", "", text)
     text = re.sub(r"\n{3,}", "\n\n", text)
     # An em dash that became a comma, followed by a sentence connective, leaves
@@ -189,27 +179,11 @@ def scan_structures(text, lex):
     return flags
 
 
-def restore_capitals(original, text):
-    """Deleting an opener leaves the next word lower case.
-
-    Only fix it for writers who capitalise their sentences in the first place:
-    a deliberately lower-case voice is a style, not an artifact, and shouting
-    over it would be exactly the kind of thing this script exists to stop.
-    """
-    starts = re.findall(r"(?:^|[.!?]\s+|\n)\s*([A-Za-z])", original)
-    if not starts or sum(1 for c in starts if c.isupper()) * 2 < len(starts):
-        return text
-    return re.sub(r"(?:^|(?<=[.!?] )|(?<=[.!?]\n)|(?<=\n))\s*([a-z])",
-                  lambda m: m.group(0)[:-1] + m.group(1).upper(), text)
-
-
 def humanize(text, lex):
-    raw_for_case = text
     text, urls = protect_urls(text)
     text, inv = pass_invisible(text, lex)
     text, typo = pass_typographic(text, lex)
     text, lexi = pass_lexical(text, lex)
-    text = restore_capitals(raw_for_case, text)
     text = restore_urls(text, urls)
     return text.strip() + "\n", {
         "invisible": inv,

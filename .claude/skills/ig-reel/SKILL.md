@@ -11,6 +11,13 @@ description: >-
 
 # ig-reel
 
+## Sal's rules (override everything below)
+- US English. No em dashes, no en dashes, no spaced hyphen used as a dash, even where the examples below use them.
+- Use only Sal's real numbers and stories. Missing facts stay `{{placeholder}}`. Never invent.
+- Skip guru or sales hooks (insider secrets, "steal this", comment-for-link). Comment-word CTAs only as free value, never a pitch.
+- Run `li-human`/`ig-human` with `--report` and fix by hand. Do not accept blind word swaps.
+- Draft only. Never post, schedule or send.
+
 Turns one raw idea into a Reel that somebody finishes.
 
 Two tools live in this folder and they both actually run. Use them. Do not
@@ -24,7 +31,7 @@ python3 beats.py script.txt --target 30     # timed beat sheet before you shoot
 
 ## Before you write
 
-1. Read `content-system/data/instagram/voice.md` if it exists. That is the user's voice
+1. Read `MYVOICE.md` if it exists. That is the user's voice
    profile: how they talk on camera, what they never say, who they are talking
    to. If it does not exist, ask for **three of their own reels**, transcribe or
    read them, infer the voice, and write the file. A script in the wrong voice
@@ -86,7 +93,7 @@ REEL READY
 hook:       #3 Nobody Tells You, scored 86 STRONG
 length:     28.4s across 9 beats at 165 wpm
 on-screen:  6 cards
-humanizer:  4 artefacts stripped, human score 81 PASS
+humanizer:  4 artifacts stripped, human score 81 PASS
 caption:    run /ig-caption next
 
 Reply "yes" to log it, or tell me what to change.
